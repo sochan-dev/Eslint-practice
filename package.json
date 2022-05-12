@@ -1,0 +1,24 @@
+{
+  "name": "eslint-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint":"eslint -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sochan-dev/Eslint-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sochan-dev/Eslint-practice/issues"
+  },
+  "homepage": "https://github.com/sochan-dev/Eslint-practice#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
+}
