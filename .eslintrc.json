@@ -1,0 +1,49 @@
+{
+    /*
+    基本的にeslintのruleは汎用的なもので、
+    特定のライブラリ・フレームワーク、実行環境の検証が出来ない。
+    ☆そこでプラグインを利用する。プラグインはmpmパッケージとして提供されてる。
+    指定する文字列は、インストールしたパッケージの「-」区切りの末尾を指定する。（eslint-plugin-node なら node）
+    ここにインストールして指定することで、インストールしたプラグイン独自の設定をrulesに書き込める。
+    */
+    "plugins": ["node"],
+    /*
+    --推奨設定(recommended)
+        extendsでインストールしたプラグインの推奨設定を適用できる。
+        推奨されている設定はそれぞれの公式documentを見れば分かる。
+        書き方は plugin:{プラグイン名末尾っぽい}/recommended
+
+    --共有設定(shared config)
+        extendsでインストールした共有設定パッケージを適用できる。
+        共有設定 → Eslintの設定をまとめたnpmパッケージ。先人の共有設定でらくに設定できちゃう。
+        extendsに指定した後、好きに改造できる（おそらくrulesが最優先適用されるのでオーバーライドできるため）
+        指定する文字列はパッケージの「-」区切りの末尾っぽい
+
+    */
+    "extends": ["eslint:recommended","plugin:node/recommended"],
+    //静的検証の前提条件を設定
+    /*
+    browser:ブラウザ
+    nodeJs:node
+    es6:ecmascript2016(es6)
+    */
+    "env": {
+        "browser": true,
+        "es6":true
+    },
+    /*
+    envでes6を指定したら（es6以降のES Modulesを使うなら)、
+    parseOptions.ecmaVersionにes6以降の指定と
+    parseOptions.ecmaVersionにsourceTypeを指定する必要がある
+    */
+    "parserOptions": {
+        "ecmaVersion":2018,
+        "sourceType": "module"
+    },
+    //大域変数がある場合はここに定義しておく。でもES moduleなら使わないのでは。
+    "globals": {"bbb":false},
+    //ここにルールひとつずつ指定していく。
+    "rules": {
+        "semi":["error","never"]
+    }
+}
